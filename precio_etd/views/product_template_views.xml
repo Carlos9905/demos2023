@@ -9,9 +9,9 @@
             <field name="model">product.product</field>
             <field name="inherit_id" ref="product.product_product_tree_view"/>
             <field name="arch" type="xml">
-                <field name="name" position="after">
-                    <field name="precio_etd_id"/>
-                </field>
+                <xpath expr="//field[@name='name']" position="before">
+                  <field name="precio_etd_id"/>
+                  </xpath>
             </field>
         </record>
 
@@ -29,8 +29,8 @@
 
         <!-- Form View -->
         <record id="product_template_form_view_inherit" model="ir.ui.view">
-            <field name="name">product.template.form.view.inherit</field>
-            <field name="model">product.template</field>
+            <field name="name">product.product.form.view.inherit</field>
+            <field name="model">product.product</field>
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
                 <field name="uom_po_id" position="after">
