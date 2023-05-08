@@ -7,7 +7,7 @@ class ProductProduct(models.Model):
         'product.pricelist', string='Ubicación', ondelete='restrict',
         help="Relación con la tarifa para actualizar el precio de venta y la tarifa.")
 
-    @api.onchange('precio_etd_id')
+    """@api.onchange('precio_etd_id')
     def _onchange_precio_etd_id(self):
         if self.precio_etd_id:
             self.list_price = self.precio_etd_id.get_product_price(self, 1, False)
@@ -23,3 +23,4 @@ class ProductProduct(models.Model):
                     'fixed_price': self.list_price
                 })]
             })
+"""
