@@ -10,8 +10,9 @@ class ProductProduct(models.Model):
     @api.onchange('precio_etd_id')
     def _update_sale_price(self):
         for record in self:
+            linea=self.env["product.pricelist.item"].search([("pricelist_id","=",record.precio_etd_id.id)])
             if record.precio_etd_id:
-                record.lst_price = record.precio_etd_id.fixed_price
+                record.lst_price = linea.fixed_price
             else:
                 record.lst_price = 0
 
