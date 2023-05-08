@@ -9,21 +9,9 @@ class ProductProduct(models.Model):
 
     @api.onchange('precio_etd_id')
     def _update_sale_price(self):
-        for record in self:
-            linea=self.env["product.pricelist.item"].search([("pricelist_id","=",record.precio_etd_id.id)])
-            if record.precio_etd_id:
-                record.lst_price = linea.fixed_price
-            else:
-                record.lst_price = 0
-
-
-    """@api.onchange('list_price')
-    def _onchange_list_price(self):
+        
+        linea=self.env["product.pricelist.item"].search([("pricelist_id","=",self.precio_etd_id.id)])
         if self.precio_etd_id:
-            self.precio_etd_id.write({
-                'item_ids': [(0, 0, {
-                    'product_id': self.id,
-                    'fixed_price': self.list_price
-                })]
-            })
-"""
+            self.lst_price = linea.fixed_price
+        else:
+            self.lst_price = 0
