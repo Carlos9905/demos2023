@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Tree view for price history -->
+        <record id="view_tree_price_history_1" model="ir.ui.view">
+            <field name="name">price.history.tree</field>
+            <field name="model">price.history</field>
+            <field name="arch" type="xml">
+                <tree string="Price History">
+                    <field name="product_template_id"/>
+                    <field name="old_price"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Window action for price history -->
+        <record id="action_price_history_1" model="ir.actions.act_window">
+            <field name="name">Historial de cambios de precios</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">price.history</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <!-- Menu item for price history -->
+        <menuitem id="menu_price_history_1"
+                  name="Historial de cambios de precios"
+                  parent="stock.menu_warehouse_report"
+                  action="action_price_history_1"
+                  sequence="20"/>
+    </data>
+</odoo>
