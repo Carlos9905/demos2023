@@ -9,7 +9,6 @@
     'data': [
         'security/ir.model.access.csv',
         'views/product_template_views.xml',
-        #'views/price_history_report_views.xml',
     ],
     'installable': True,
     'application': False,
