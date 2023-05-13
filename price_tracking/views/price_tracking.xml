@@ -9,6 +9,8 @@
                 <tree string="Price History">
                     <field name="product_template_id"/>
                     <field name="old_price"/>
+                    <field name="barcode" string="Código de barras"/>
+                    <field name="default_code" string="Referencia"/>
                 </tree>
             </field>
         </record>
