@@ -4,15 +4,14 @@ from odoo import models, fields, api
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-
     @api.onchange('lst_price')
     def _onchange_lst_price(self):
         for template in self:
             if template.lst_price:
                 self.env["price.history"].create(
                     {
-                        "product_template_id":template.id,
-                        "old_price":template.lst_price
+                        "product_template_id": template.id,
+                        "old_price": template.lst_price
                     }
                 )
 
@@ -25,3 +24,5 @@ class PriceHistory(models.Model):
     old_price = fields.Float(string='Old Price')
     new_price = fields.Float(string='New Price')
     date = fields.Datetime(string='Date', default=lambda self: fields.Datetime.now())
+    barcode = fields.Char(related='product_template_id.barcode', string='Barcode')
+    default_code = fields.Char(related='product_template_id.default_code', string='Default Code')
