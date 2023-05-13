@@ -4,14 +4,14 @@ from odoo import models, fields, api
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    @api.onchange('lst_price')
-    def _onchange_lst_price(self):
+    @api.onchange('list_price')
+    def _onchange_list_price(self):
         for template in self:
-            if template.lst_price:
+            if template.list_price:
                 self.env["price.history"].create(
                     {
                         "product_template_id": template.id,
-                        "old_price": template.lst_price
+                        "old_price": template.list_price
                     }
                 )
 
